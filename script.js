@@ -17,6 +17,7 @@ var indice   = 0;
 
 //audios 
 const preto_no_preto = document.getElementById('preto_no_preto');
+const pum_impacto    = document.getElementById("pum_impacto");
 
 
 //#endregion
@@ -41,13 +42,25 @@ function atualizar_texto()
 }
 
 //quando eu clico no botão não, a funççao de atualizar_texto é chamada
-bad_btt.addEventListener('click', atualizar_texto);
+bad_btt.addEventListener('click', () => {
+    
+    //função de mudar o texto
+    atualizar_texto();
+
+    //define quando o audio vai começar
+    //e faz o audio começar de novo se o usuário
+    //clicar varias vezes
+    pum_impacto.currentTime = 0.3;
+
+    //toca  som de impacto
+    pum_impacto.play();
+
+    });
 
 good_btt.addEventListener('click', () => {
-            // 1. Define o ponto de início
+
             preto_no_preto.currentTime = 5; 
             
-            // 2. Dá o play
             preto_no_preto.play();
         });
 
