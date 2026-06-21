@@ -1,5 +1,6 @@
+//#region vars e dicionario
 var bad_btt     = document.getElementById("bad-btt");
-const botao     = document.querySelector('#meuBotao');
+const good_btt  = document.querySelector('.good-btt');
 const paragrafo = document.querySelector('#paragrafo');
 
 //dicionário com os textos que serão exibidos a cada clique
@@ -14,6 +15,13 @@ const dicionario = {
 const chaves = Object.keys(dicionario);
 var indice   = 0;
 
+//audios 
+const preto_no_preto = document.getElementById('preto_no_preto');
+
+
+//#endregion
+
+//#region funções e metodos
 function atualizar_texto()
 {
     //incremento ao indice 
@@ -35,6 +43,15 @@ function atualizar_texto()
 //quando eu clico no botão não, a funççao de atualizar_texto é chamada
 bad_btt.addEventListener('click', atualizar_texto);
 
+good_btt.addEventListener('click', () => {
+            // 1. Define o ponto de início
+            preto_no_preto.currentTime = 5; 
+            
+            // 2. Dá o play
+            preto_no_preto.play();
+        });
+
+//#endregion
 
 // // Quando clica no SIM, muda o texto da pergunta
 // botao.addEventListener('click', () => {
@@ -50,22 +67,4 @@ bad_btt.addEventListener('click', atualizar_texto);
 //         // chaves[1] é "segundo" -> dicionario["segundo"] é "teste 2"
 //         paragrafo.textContent = dicionario[chaves[1]];
 //     }
-// });
-
-
-
-//   if (paragrafo.textContent === "Texto Original da Página") {
-//     paragrafo.textContent = "O texto foi alterado!";
-    
-    
-// }
-//     if(paragrafo.textContent === "TExto OLIGINAL DA CHINA"){
-//         paragrafo.textContent = "O TEXTO FOI ALTELADO";
-
-//     }
-
-// else {
-//   paragrafo.textContent = "Texto Original da Página";
-// }
-
 // });
