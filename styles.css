@@ -2,12 +2,28 @@
     --blue-main: rgb(38, 0, 255);
     --red-main: rgb(254, 35, 35);
 }
-body{
+/* body{
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 150px;
     background: linear-gradient(5deg,rgba(112, 14, 158, 1) 39%, rgba(109, 87, 199, 1) 84%);
+} */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Garante que o fundo ocupe no mínimo 100% da altura da tela visível (Viewport Height) */
+    /* Isso impede que o fundo fique cortado ou se repita em telas grandes */
+    min-height: 100vh; 
+    
+    /* Remove as margens padrão que o próprio navegador adiciona ao redor da página */
+    /* Isso evita o surgimento daquelas barras de rolagem indesejadas nas laterais */
+    margin: 0; 
+    
+    background: linear-gradient(5deg, rgba(112, 14, 158, 1) 39%, rgba(109, 87, 199, 1) 84%);
 }
 
 .principal-box{
