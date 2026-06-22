@@ -1,82 +1,102 @@
-:root{
+:root {
     --blue-main: rgb(38, 0, 255);
     --red-main: rgb(254, 35, 35);
 }
-/* body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 150px;
-    background: linear-gradient(5deg,rgba(112, 14, 158, 1) 39%, rgba(109, 87, 199, 1) 84%);
-} */
 
 body {
+    margin: 0;
+    min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    /* Garante que o fundo ocupe no mínimo 100% da altura da tela visível (Viewport Height) */
-    /* Isso impede que o fundo fique cortado ou se repita em telas grandes */
-    min-height: 100vh; 
-    
-    /* Remove as margens padrão que o próprio navegador adiciona ao redor da página */
-    /* Isso evita o surgimento daquelas barras de rolagem indesejadas nas laterais */
-    margin: 0; 
-    
-    background: linear-gradient(5deg, rgba(112, 14, 158, 1) 39%, rgba(109, 87, 199, 1) 84%);
+
+    background: linear-gradient(
+        5deg,
+        rgba(112, 14, 158, 1) 39%,
+        rgba(109, 87, 199, 1) 84%
+    );
 }
 
-.principal-box{
-    border: 2px solid blue;
-    padding: 10px 40px;
-    border-radius: 20px;
+.principal-box {
+    padding: 20px 40px;
+
     display: flex;
     flex-direction: column;
-    color: rgb(255, 255, 255);
-    background: rgb(0, 0, 0);
-    align-content: center ;
     align-items: center;
+
+    color: white;
+    background: black;
+
+    border: 2px solid blue;
+    border-radius: 20px;
 }
 
-.buttons{
-    margin-bottom: 20px;
+.buttons {
     display: flex;
-    gap: 10px  
-} 
+    gap: 15px;
+    margin-bottom: 15px;
+}
 
-.good-btt{
+.good-btt,
+.bad-btt {
+    padding: 15px 30px;
 
+    color: white;
+    border: none;
+    border-radius: 30px;
+
+    cursor: pointer;
+}
+
+.good-btt {
     background: var(--blue-main);
-    border: 10px;
-    border-radius: 30px;
-    padding: 15px 30px;
-    color: white;
-}
-.bad-btt{
-    background: var(--red-main);
-    border: 10px;
-    border-radius: 30px;
-    padding: 15px 30px;
-    color: white;
 }
 
-/* Esconde o texto real do botão tirando o tamanho dele ao fazer hover */
+.bad-btt {
+    background: var(--red-main);
+}
+
 .bad-btt:hover {
     font-size: 0;
     background: var(--blue-main);
-    
-  }
-  
-  /* Injeta o texto do atributo data-hover e restaura o tamanho da fonte */
-  .bad-btt:hover::after {
-    content: attr(data-hover);
-    font-size: 13px; /* Ajuste para o tamanho original da sua fonte */
-  }
+}
 
-.bad-btt:active,
-.good-btt:active {
+.bad-btt:hover::after {
+    content: attr(data-hover);
+    font-size: 13px;
+}
+
+.good-btt:active,
+.bad-btt:active {
     transform: scale(0.95) translateY(3px);
+
     box-shadow:
-        0 0 2px #ffffff,
-        0 0 5px #ffffff;
+        0 0 2px white,
+        0 0 5px white;
+}
+
+/* Tela escura */
+
+#janela-imagem {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    z-index: 9999;
+}
+
+#imagem-central {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+}
+
+.escondido {
+    display: none !important;
 }

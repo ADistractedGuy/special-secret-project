@@ -1,83 +1,71 @@
-//#region vars e dicionario
-var bad_btt     = document.getElementById("bad-btt");
-const good_btt  = document.querySelector('.good-btt');
-const paragrafo = document.querySelector('#paragrafo');
+// ==================== ELEMENTOS ====================
 
-//dicionário com os textos que serão exibidos a cada clique
+const badBtt = document.getElementById("bad-btt");
+const goodBtt = document.getElementById("good-btt");
+const paragrafo = document.getElementById("paragrafo");
+const janelaImagem = document.getElementById("janela-imagem");
+
+const pretoNoPreto = document.getElementById("preto_no_preto");
+const pumImpacto = document.getElementById("pum_impacto");
+
+// ==================== DICIONÁRIO ====================
+
 const dicionario = {
-
     primeiro: "teste",
+    segundo: "teste 2",
+    special: "Texto Especial"
+};
 
-    segundo: "teste 2"
-}
-
-//extrai as chaves do dicionário em um array: ["primeiro", "segundo"]
 const chaves = Object.keys(dicionario);
-var indice   = 0;
 
-//audios 
-const preto_no_preto = document.getElementById('preto_no_preto');
-const pum_impacto    = document.getElementById("pum_impacto");
+let indice = 0;
 
+// ==================== FUNÇÕES ====================
 
-//#endregion
-
-//#region funções e metodos
-function atualizar_texto()
-{
-    //incremento ao indice 
+function atualizarTexto() {
     indice++;
 
-    //só atualiza enquanto ainda houver textos no dicionário
-    //se tiver dois itens, ele nn vai tentar verificar um terceiro
-    if (indice <= chaves.length) 
-    {
-        //altera o texto do h2
-        // O -1 compensa o incremento acima: 
-        // se indice é 1, queremos chaves[0] (texto 1)                             
-        // se indice é 2, queremos chaves[1] (texto 2)...
-        paragrafo.textContent = dicionario[chaves[indice - 1]];
+    if (indice <= chaves.length) {
+        paragrafo.textContent =
+            dicionario[chaves[indice - 1]];
     }
-
 }
 
-//quando eu clico no botão não, a funççao de atualizar_texto é chamada
-bad_btt.addEventListener('click', () => {
-    
-    //função de mudar o texto
-    atualizar_texto();
+function tocarImpacto() {
+    pumImpacto.currentTime = 0.3;
+    pumImpacto.play();
+}
 
-    //define quando o audio vai começar
-    //e faz o audio começar de novo se o usuário
-    //clicar varias vezes
-    pum_impacto.currentTime = 0.3;
+function tocarMusica() {
+    pretoNoPreto.currentTime = 5;
+    pretoNoPreto.play();
 
-    //toca  som de impacto
-    pum_impacto.play();
+    setTimeout(() => {
+        pretoNoPreto.pause();
+    }, 24000);
+}
 
-    });
+function mensagemEspecial() {
+    paragrafo.textContent = dicionario.special;
 
-good_btt.addEventListener('click', () => {
+    // Mostra a imagem
+    janelaImagem.classList.remove("escondido");
 
-            preto_no_preto.currentTime = 5; 
-            
-            preto_no_preto.play();
-        });
+    // Esconde depois de 3 segundos
+    setTimeout(() => {
+        janelaImagem.classList.add("escondido");
+        paragrafo.textContent = dicionario.primeiro;
+    }, 20000);
+}
 
-//#endregion
+// ==================== EVENTOS ====================
 
-// // Quando clica no SIM, muda o texto da pergunta
-// botao.addEventListener('click', () => {
-//     // Toda vez que clica, o índice aumenta 1
-//     indice++;
+goodBtt.addEventListener("click", () => {
+    mensagemEspecial();
+    tocarMusica();
+});
 
-//     // Verifica se o índice ainda existe dentro do nosso dicionário
-//     if (indice === 1) {
-//         // chaves[0] é "primeiro" -> dicionario["primeiro"] é "teste"
-//         paragrafo.textContent = dicionario[chaves[0]]; 
-//     } 
-//     else if (indice === 2) {
-//         // chaves[1] é "segundo" -> dicionario["segundo"] é "teste 2"
-//         paragrafo.textContent = dicionario[chaves[1]];
-//     }
-// });
+badBtt.addEventListener("click", () => {
+    atualizarTexto();
+    tocarImpacto();
+});

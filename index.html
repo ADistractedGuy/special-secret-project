@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,17 +8,44 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="principal-box">
-    <H2 id="paragrafo">💍 Quer ser nosso padrinho? 💍</H2>
-        <div class="buttons">
 
-            <button id="good-btt" class="good-btt">SIM</button>
-            <button id="bad-btt" class="bad-btt" data-hover="😡SIM 😡">NÃO</button>
+    <!-- Janela da imagem -->
+    <div id="janela-imagem" class="escondido">
+        <img src="/imgs/therock.jpg" alt="The Rock" id="imagem-central" height="100px" width="100px">
+    </div>
+
+    <div class="principal-box">
+
+        <h2 id="paragrafo">
+            💍 Quer ser nosso padrinho? 💍
+        </h2>
+
+        <div class="buttons">
+            <button id="good-btt" class="good-btt">
+                SIM
+            </button>
+
+            <button
+                id="bad-btt"
+                class="bad-btt"
+                data-hover="😡SIM 😡"
+            >
+                NÃO
+            </button>
         </div>
 
-        <audio id="preto_no_preto" src="sons e música/preto_no_preto_ac_dc.mp3"></audio>
-        <audio id = "pum_impacto" src="sons e música/pum-impacto.mp3"></audio>
+        <audio
+            id="preto_no_preto"
+            src="sons e música/preto_no_preto_ac_dc.mp3">
+        </audio>
+
+        <audio
+            id="pum_impacto"
+            src="sons e música/pum-impacto.mp3">
+        </audio>
+
     </div>
+
+    <script src="script.js"></script>
 </body>
-<script  src="script.js"></script>
 </html>
