@@ -1,26 +1,39 @@
-// ==================== ELEMENTOS ====================
+// ==================== ELEMENTOS ====================  //
 
 const badBtt = document.getElementById("bad-btt");
 const goodBtt = document.getElementById("good-btt");
 const paragrafo = document.getElementById("paragrafo");
 const janelaImagem = document.getElementById("janela-imagem");
 
+//Sons
 const pretoNoPreto = document.getElementById("preto_no_preto");
 const pumImpacto = document.getElementById("pum_impacto");
 
-// ==================== DICIONÁRIO ====================
+//Mensagen Especial do Coracion
+const specialText = "🟢⬆️Certificado de Promoção🟢⬆️\n\nCargo anterior: Pai da sala\n\n💍Novo Cargo: Padrinho da sala💍 \n\n ✅Status: Aceito com sucesso✅ ";
+
+// ==================== VARIÁVEIS ==================== //
+let tamanhoBotao = 5;
+
+let contadorNao = 0;
+
+
+
+// ==================== DICIONÁRIO ==================== //
 
 const dicionario = {
-    primeiro: "teste",
-    segundo: "teste 2",
-    special: "Texto Especial"
+    primeiro: "🔪Tem certeza🔪\n Quer mudar a resposta para sim?",
+    segundo: "🥺Porfavorzinho🥺",
+    terceiro:"😡Não nos deixe na mão😡",
+    quarta:"20 + 20 + 20 + 7 =",
+    
 };
 
 const chaves = Object.keys(dicionario);
 
 let indice = 0;
 
-// ==================== IMAGENS =======================
+// ==================== IMAGENS ======================= //
 
 //var pra pegar o id da imagem-central
 const imagemCentral = document.getElementById("imagem-central");
@@ -28,7 +41,9 @@ const imagemCentral = document.getElementById("imagem-central");
 const imagens = [
     "imgs/therock.jpg",
     "imgs/serio-neguinho.png",
-    "imgs/realistic-sob-crying-emoji.png"
+    "imgs/realistic-sob-crying-emoji.png",
+    "imgs/pare-joao.jpg",
+    "imgs/sonic.jpg"
 ];
 
 //var pra armazenar a img_sorteada
@@ -37,7 +52,7 @@ let img_sorteada;
 //var pra guardar a ultima imagem que foi sorteada
 let ultimaImagem = null;
 
-// ==================== FUNÇÕES =======================
+// ==================== FUNÇÕES ======================= //
 
 function atualizarTexto() {
     indice++;
@@ -63,21 +78,68 @@ function tocarMusica() {
 }
 
 function mensagemEspecial() {
-    paragrafo.textContent = dicionario.special;
+    paragrafo.textContent = specialText;
 
 }
 
-// ==================== EVENTOS ====================
+// ==================== EVENTOS ==================== //
 
 goodBtt.addEventListener("click", () => {
     mensagemEspecial();
     tocarMusica();
+    tamanhoBotao -= 5;
+    goodBtt.style.transform = `scale(${tamanhoBotao})`;
+
+    goodBtt.style.display = "none";
+        badBtt.style.display = "none";
+
+    if (tamanhoBotao <= 0) {
+        goodBtt.style.display = "none";
+        badBtt.style.display = "none";
+
+    }
 });
 
 
 badBtt.addEventListener("click", () => {
     atualizarTexto();
     tocarImpacto();
+
+    if (indice === 4){
+        goodBtt.textContent = "💍67💍";
+
+        badBtt.textContent = "76";
+    }
+
+        // aumenta 20% a cada clique
+    tamanhoBotao += 0.2;
+
+
+
+        // Conta quantas vezes o NÃO foi clicado
+    contadorNao++;
+
+    // Aumenta o SIM a cada 3 cliques
+    if (contadorNao >= 5 ) {
+        tamanhoBotao += 0.2;
+        goodBtt.style.transform = `scale(${tamanhoBotao})`;
+    }
+
+    // aplica o novo tamanho
+    
+    
+    
+
+//    goodBtt.style.width = `${largura}px`;
+//  goodBtt.style.height = `${altura}px`;
+// //badBtt.style.width = `${largura_nao}px`;
+//    badBtt.style.height = `${altura_nao}px`;
+//   badBtt.style.fontSize = `${largura_nao}px`;
+// badBtt.style.fontSize = `${altura_nao}px`;
+
+    
+
+    pretoNoPreto.pause();
 
     // Sorteia até pegar uma diferente da última
     do 
@@ -94,15 +156,13 @@ badBtt.addEventListener("click", () => {
     ultimaImagem = img_sorteada;
 
     //troca o scr da imagem do meu html pelo scr da imagem sorteada
-    imagemCentral.src = img_sorteada;
-
-    //Mostra a imagem
+imagemCentral.onload = () => {
     janelaImagem.classList.remove("escondido");
 
-    //Esconde depois de 1 segundos
     setTimeout(() => {
         janelaImagem.classList.add("escondido");
-        //paragrafo.textContent = dicionario.primeiro;
-    }, 1000);
+    }, 500);
+};
 
+imagemCentral.src = img_sorteada;
 });

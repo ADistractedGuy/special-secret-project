@@ -19,8 +19,7 @@ body {
 }
 
 .principal-box {
-    padding: 20px 40px;
-
+    padding: 50px 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,13 +39,15 @@ body {
 
 .good-btt,
 .bad-btt {
-    padding: 15px 30px;
+    padding: 25px 40px;
 
     color: white;
     border: none;
-    border-radius: 30px;
+    border-radius: 35px;
 
     cursor: pointer;
+
+    font-size: 20px;
 }
 
 .good-btt {
@@ -60,11 +61,12 @@ body {
 .bad-btt:hover {
     font-size: 0;
     background: var(--blue-main);
+    
 }
 
 .bad-btt:hover::after {
     content: attr(data-hover);
-    font-size: 13px;
+    font-size: 20px;
 }
 
 .good-btt:active,
@@ -100,4 +102,10 @@ body {
 
 .escondido {
     display: none !important;
+}
+
+#paragrafo {
+    margin-bottom: 50px;
+    white-space: pre-line;
+    text-align: center;
 }
