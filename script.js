@@ -26,9 +26,9 @@ let indice = 0;
 const imagemCentral = document.getElementById("imagem-central");
 
 const imagens = [
-    "/imgs/therock.jpg",
-    "/imgs/serio-neguinho.png",
-    "/imgs/realistic-sob-crying-emoji.png"
+    "imgs/therock.jpg",
+    "imgs/serio-neguinho.png",
+    "imgs/realistic-sob-crying-emoji.png"
 ];
 
 //var pra armazenar a img_sorteada
