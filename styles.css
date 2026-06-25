@@ -78,6 +78,15 @@ body {
         0 0 5px white;
 }
 
+.gif {
+    width: 100%; /* ou defina um valor como '300px' */
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0 auto; /* Centraliza a imagem */
+}
+
+
 /* Tela escura */
 
 #janela-imagem {
@@ -104,8 +113,49 @@ body {
     display: none !important;
 }
 
+
+#janela-video {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.7);
+
+    z-index: 9999;
+}
+
+#video-central {
+    max-width: 80%;
+    max-height: 80%;
+    border-radius: 15px;
+    scale: 3;
+}
+
+.escondido {
+    display: none !important;
+}
+
 #paragrafo {
     margin-bottom: 50px;
     white-space: pre-line;
     text-align: center;
+}
+
+
+.sem-hover:hover {
+    background: inherit !important;
+    transform: none !important;
+    font-size: inherit !important;
+
+}
+
+.bad-btt.sem-hover:hover::after {
+    content: none;
+}
+.bad-btt.sem-hover:hover {
+    font-size: inherit;
+    background: var(--red-main);
 }

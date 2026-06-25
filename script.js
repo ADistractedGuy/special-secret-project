@@ -9,6 +9,9 @@ const janelaImagem = document.getElementById("janela-imagem");
 const pretoNoPreto = document.getElementById("preto_no_preto");
 const pumImpacto = document.getElementById("pum_impacto");
 
+const janelaVideo = document.getElementById("janela-video");
+
+
 //Mensagen Especial do Coracion
 const specialText = "🟢⬆️Certificado de Promoção🟢⬆️\n\nCargo anterior: Pai da sala\n\n💍Novo Cargo: Padrinho da sala💍 \n\n ✅Status: Aceito com sucesso✅ ";
 
@@ -24,8 +27,8 @@ let contadorNao = 0;
 const dicionario = {
     primeiro: "🔪Tem certeza🔪\n Quer mudar a resposta para sim?",
     segundo: "🥺Porfavorzinho🥺",
-    terceiro:"😡Não nos deixe na mão😡",
     quarta:"20 + 20 + 20 + 7 =",
+    terceiro:"O Pessoal vai PARAR de jogar na sua aula! Quer mudar sua resposta para 'sim'?",
     
 };
 
@@ -38,6 +41,10 @@ let indice = 0;
 //var pra pegar o id da imagem-central
 const imagemCentral = document.getElementById("imagem-central");
 
+const videoCentral = document.getElementById("video-central");
+
+
+
 const imagens = [
     "imgs/therock.jpg",
     "imgs/serio-neguinho.png",
@@ -49,10 +56,13 @@ const imagens = [
 //var pra armazenar a img_sorteada
 let img_sorteada;
 
-//var pra guardar a ultima imagem que foi sorteada
+//var pra gua
+// rdar a ultima imagem que foi sorteada
 let ultimaImagem = null;
 
 // ==================== FUNÇÕES ======================= //
+
+
 
 function atualizarTexto() {
     indice++;
@@ -98,14 +108,26 @@ goodBtt.addEventListener("click", () => {
         badBtt.style.display = "none";
 
     }
+
+    janelaVideo.classList.remove("escondido");
+
+    setTimeout(() => {
+        janelaVideo.classList.add("escondido");
+    }, 5000);
+
+    setTimeout(()=>{
+        location.reload();
+    },25000)
+
 });
+
 
 
 badBtt.addEventListener("click", () => {
     atualizarTexto();
     tocarImpacto();
 
-    if (indice === 4){
+    if (indice === 3){
         goodBtt.textContent = "💍67💍";
 
         badBtt.textContent = "76";
@@ -119,25 +141,24 @@ badBtt.addEventListener("click", () => {
         // Conta quantas vezes o NÃO foi clicado
     contadorNao++;
 
+    if(indice === 4){
+            goodBtt.textContent = "SIM"
+            
+            badBtt.textContent = "NÃO"
+
+            
+        }
+
     // Aumenta o SIM a cada 3 cliques
     if (contadorNao >= 5 ) {
         tamanhoBotao += 0.2;
         goodBtt.style.transform = `scale(${tamanhoBotao})`;
     }
 
-    // aplica o novo tamanho
-    
-    
-    
+    if(indice === 5){
+        goodBtt.textContent = "!!!NÂO HÁ ESCOLHA!!!"
 
-//    goodBtt.style.width = `${largura}px`;
-//  goodBtt.style.height = `${altura}px`;
-// //badBtt.style.width = `${largura_nao}px`;
-//    badBtt.style.height = `${altura_nao}px`;
-//   badBtt.style.fontSize = `${largura_nao}px`;
-// badBtt.style.fontSize = `${altura_nao}px`;
-
-    
+    }    
 
     pretoNoPreto.pause();
 
@@ -155,14 +176,13 @@ badBtt.addEventListener("click", () => {
     //salva a imagem sorteada como "última"
     ultimaImagem = img_sorteada;
 
-    //troca o scr da imagem do meu html pelo scr da imagem sorteada
-imagemCentral.onload = () => {
-    janelaImagem.classList.remove("escondido");
-
-    setTimeout(() => {
-        janelaImagem.classList.add("escondido");
-    }, 500);
-};
-
-imagemCentral.src = img_sorteada;
+    imagemCentral.onload = () => {
+        janelaImagem.classList.remove("escondido");
+        
+        setTimeout(() => {
+            janelaImagem.classList.add("escondido");
+        }, 500);
+    };
+    imagemCentral.src = img_sorteada;
 });
+    
